@@ -1,0 +1,90 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>Let's try the third option — the <strong>target encoder.</strong> The idea is to use the posterior probability of the target variable to encode the categorical data. Suppose you have the following dataset:</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 400px;">
+<thead>
+<tr>
+<th>Pet</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code class="java">dog</code></td>
+<td style="text-align: center;"><code class="java">1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">dog</code></td>
+<td style="text-align: center;"><code class="java">1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">cat</code></td>
+<td style="text-align: center;"><code class="java">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">dog</code></td>
+<td style="text-align: center;"><code class="java">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">cat</code></td>
+<td style="text-align: center;"><code class="java">1</code></td>
+</tr>
+</tbody>
+</table>
+<p>In the simplest case, the target encoder would count the probability of target being equal to <span class="math-tex">\(1\)</span>, and replace each categorical value with this probability:</p>
+<p><span class="math-tex">\[P_{dog, 1} = 2/3 \approx 0.66\]</span></p>
+<p><span class="math-tex">\[P_{cat, 1} = 1/2 = 0.50\]</span></p>
+<p>The result looks like this:</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 600px;">
+<thead>
+<tr>
+<th>Pet</th>
+<th>Pet_encoded</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; width: 30%;"><code class="java">dog</code></td>
+<td style="text-align: center; width: 40%;"><code class="java">0.66</code></td>
+<td style="text-align: center; width: 30%;"><code class="java">1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">dog</code></td>
+<td style="text-align: center;"><code class="java">0.66</code></td>
+<td style="text-align: center;"><code class="java">1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">cat</code></td>
+<td style="text-align: center;"><code class="java">0.50</code></td>
+<td style="text-align: center;"><code class="java">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">dog</code></td>
+<td style="text-align: center;"><code class="java">0.66</code></td>
+<td style="text-align: center;"><code class="java">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">cat</code></td>
+<td style="text-align: center;"><code class="java">0.50</code></td>
+<td style="text-align: center;"><code class="java">1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the <code class="java">TargetEncoder</code> from <code class="java">category_encoders</code> will produce different final values every time. This encoder considers both the posterior probability (the probability of the target being <code class="java">1</code> given a specific category) and the prior probability (the overall probability of the target being <code class="java">1</code>). The encoder uses prior probability information to smooth the resulting encoding.</p>
+<h5 id="objectives">Objectives</h5>
+<p>Continue to work with the data from the previous stage. To complete this stage:</p>
+<ol>
+<li>Make sure that you have the <code class="java">category_encoders</code> library installed in your projects;</li>
+<li>Import <code class="java">TargetEncoder</code> from <code class="java">category_encoders</code>;</li>
+<li>Create one <code class="java">TargetEncoder</code> encoder for three categorical columns in this sequence: <code class="java">Zip_area</code>, <code class="java">Room</code> and <code class="java">Zip_loc</code>;</li>
+<li>Fit the encoder to the training data;</li>
+<li>Transform the training and the test datasets with the fitted encoder;</li>
+<li>Initialize the <code class="java">DecisionTreeClassifier</code> model with the same parameters as in the previous stages. Fit a model to the training data and predict the house prices on the test data;</li>
+<li>Evaluate the model's accuracy using the <code class="java">accuracy_score</code> function;</li>
+<li>Print the accuracy value.</li>
+</ol>
+<h5 id="example">Example</h5>
+<p><em>Output:</em></p>
+<pre><code class="language-no-highlight">0.5786</code></pre>
+</div>

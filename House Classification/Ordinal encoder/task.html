@@ -1,0 +1,76 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>The type of the data encoder may greatly influence the performance of a machine learning model. It is always useful to try using various encoders and compare them, bearing in mind their respective data type.</p>
+<p>Let's make another test to handle the categorical data — <strong>ordinal encoder.</strong> This encoder transforms arbitrary categories to integers, spanning from <span class="math-tex">\(0\)</span> to <span class="math-tex">\(n-1\)</span>, where <span class="math-tex">\(n\)</span> is the number of unique feature values.</p>
+<p>Let's take a look at the example of how <code class="java">OrdinalEncoder</code> from <code class="java">scikit-learn</code> works. Suppose you have the data, presented below:</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 400px;">
+<thead>
+<tr>
+<th>Pet</th>
+<th>Owner Id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; width: 50%;"><code class="java">dog</code></td>
+<td style="text-align: center; width: 50%;"><code class="java">1</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">cat</code></td>
+<td style="text-align: center;"><code class="java">3</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">capybara</code></td>
+<td style="text-align: center;"><code class="java">2</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ordinal encoder will transform the data to the following dataset:</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 800px;">
+<thead>
+<tr>
+<th>Pet</th>
+<th>Owner Id</th>
+<th>Pet_encoded</th>
+<th>Owner Id_encoded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center; width: 25%;"><code class="java">dog</code></td>
+<td style="text-align: center; width: 25%;"><code class="java">1</code></td>
+<td style="text-align: center; width: 25%;"><code class="java">2</code></td>
+<td style="text-align: center; width: 25%;"><code class="java">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">cat</code></td>
+<td style="text-align: center;"><code class="java">3</code></td>
+<td style="text-align: center;"><code class="java">1</code></td>
+<td style="text-align: center;"><code class="java">2</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="java">capybara</code></td>
+<td style="text-align: center;"><code class="java">2</code></td>
+<td style="text-align: center;"><code class="java">0</code></td>
+<td style="text-align: center;"><code class="java">1</code></td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the categorical variables represented by the numbers will be transformed to integers based on their ascending order. String categorical variables will be sorted in the alphabetical order and then assigned integers correspondingly. </p>
+<p>Usually, this encoder is applied to data where the categories have known relationship, but why not try it?</p>
+<h5 id="objectives">Objectives</h5>
+<p>Continue to work with the data from the previous stage. To complete this stage:</p>
+<ol>
+<li>Import <code class="java">OrdinalEncoder</code> from <code class="java">sklearn.preprocessing</code>;</li>
+<li>Create the encoder.</li>
+<li>Fit the encoder to the training data using three categorical columns: <code class="java">Zip_area</code>,  <code class="java">Zip_loc</code>, <code class="java">Room</code>;</li>
+<li>Transform the training and the test datasets with the fitted encoder;</li>
+<li>Feed the transformed data back into the dataset in the same way as you did in the previous stage;</li>
+<li>Initialize the <code class="java">DecisionTreeClassifier</code> model with the same parameters as in the previous stage. Fit a model to the training data and predict the house prices on the test data;</li>
+<li>Evaluate the model's accuracy using the <code class="java">accuracy_score</code> function;</li>
+<li>Print the accuracy value.</li>
+</ol>
+<h5 id="example">Example</h5>
+<p><em>Output:</em></p>
+<pre><code class="language-no-highlight">0.5786</code></pre>
+</div>

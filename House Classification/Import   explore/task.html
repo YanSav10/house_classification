@@ -1,0 +1,76 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>Before starting to work with your data, you need to explore it first. Luckily, your data is mostly preprocessed! The dataset contains information about houses for sale in the following columns:</p>
+<ul>
+<li>
+<p><code class="java">Price</code> — the price of the house. Class <code class="java">0</code> stands for affordable housing with a price of less than 700000 euros, and class <code class="java">1</code> stands for expensive housing with the price of more than 700000 euros;</p>
+</li>
+<li>
+<p><code class="java">Area</code> — the area of the house;</p>
+</li>
+<li>
+<p><code class="java">Room</code> — how many rooms in the house;</p>
+</li>
+<li>
+<p><code class="java">Lon</code> — house longitude coordinates;</p>
+</li>
+<li>
+<p><code class="java">Lat</code> — house latitude coordinates;</p>
+</li>
+<li>
+<p><code class="java">Zip_area</code> — house location in the specific area of the Netherlands based on the zip code;</p>
+</li>
+<li>
+<p><code class="java">Zip_loc</code> — house location in a specific Amsterdam area based on the zip code.</p>
+</li>
+</ul>
+<p>Perform the exploratory data analysis. This step will help you to get to know the data and identify possible problems. EDA is meant to provide you with the insights about the data and help you better model what are you trying to predict.</p>
+<h5 id="objectives">Objectives</h5>
+<p>To complete this stage:</p>
+<ol>
+<li>
+<p>Load the data into the <code class="java">pandas</code> DataFrame;</p>
+</li>
+<li>
+<p>Analyze the data and print the answers to the following questions:</p>
+<ul>
+<li>
+<p>How many rows does the DataFrame have?</p>
+</li>
+<li>
+<p>How many columns does the DataFrame have?</p>
+</li>
+<li>
+<p>Are there any missing values in the DataFrame (<code class="java">True</code> or <code class="java">False</code>)?</p>
+</li>
+<li>
+<p>What is the maximum number of rooms across the houses in the dataset?</p>
+</li>
+<li>
+<p>What is the mean area of the houses in the dataset?</p>
+</li>
+<li>
+<p>How many unique values does column <code class="java">Zip_loc</code> contain?</p>
+</li>
+</ul>
+</li>
+</ol>
+<p></p><div class="alert alert-warning">
+<p>Provide each answer on a new line. Use the format shown in the Example section.</p>
+<p></p></div>
+<h5 id="example">Example</h5>
+<p><em>Example of DataFrame:</em></p>
+<pre><code class="language-no-highlight">     Price  Area  Room       Lon        Lat  Zip_area Zip_loc
+0        0    64     3  4.907736  52.356157        10      CR
+1        0    60     3  4.850476  52.348586        10      EL
+2        1   109     4  4.944774  52.343782        10      SM
+3        0   128     6  4.789928  52.343712        10      TH
+4        1   138     5  4.902503  52.410538        10      KN</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-no-highlight">5
+7
+False
+6
+99.8
+5</code></pre>
+</div>

@@ -1,0 +1,9 @@
+type: framework
+content:
+  - Import   explore
+  - Split the data
+  - One-hot encode the data
+  - Ordinal encoder
+  - Target encoder
+  - Performance comparison
+current_task: 5

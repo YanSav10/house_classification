@@ -1,0 +1,80 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>As you can see, there are three columns that contain categorical data: ⁣<code class="language-python">Room</code>, <code class="language-python">Zip_area</code> and <code class="language-python">Zip_loc</code>. To further pass the data to the machine learning model, encode it. With it in place, the categories will become more machine-friendly. </p>
+<p>One of the possible ways to do it is to use a <strong>one-hot encoder.</strong> This encoder transforms arbitrary categorical data to a suitable form to the algorithm. A one-hot encoder creates a separate column for each unique value of the data and marks the presence of the features with zeros and ones.</p>
+<p>Imagine, you have the data in the following format:</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 100px;">
+<thead>
+<tr>
+<th>Pet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code class="language-python">Dog</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="language-python">Cat</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="language-python">Dog</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="language-python">Fish</code></td>
+</tr>
+</tbody>
+</table>
+<p>One-hot encoder would transform the data to the format below:</p>
+<table border="1" cellpadding="1" cellspacing="1" style="width: 300px;">
+<thead>
+<tr>
+<th>Dog</th>
+<th>Cat</th>
+<th>Fish</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code class="language-python">1</code></td>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+<td style="text-align: center;"><code class="language-python">1</code></td>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="language-python">1</code></td>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+<td style="text-align: center;"><code class="language-python">0</code></td>
+<td style="text-align: center;"><code class="language-python">1</code></td>
+</tr>
+</tbody>
+</table>
+<p>It is useful to remove one of the columns, created by the one-hot encoder, to avoid multicollinearity. For some ML models, multicollinearity in the data may lead to less accurate predictions. In the example above, we have a record with the characteristic <code class="language-python">Dog</code> specified directly by the value <code class="language-python">1</code> in the corresponding field, but if we remove the <code class="language-python">Dog</code> column, then this characteristic will be defined as a set of values <code class="language-python">0</code> and <code class="language-python">0</code> in the fields <code class="language-python">Cat</code> and <code class="language-python">Fish</code>. The same result but with fewer columns.</p>
+<h5 id="objectives">Objectives</h5>
+<p>Continue to work with the data from the previous stage. To complete this stage:</p>
+<ol>
+<li>Import <code class="language-python">OneHotEncoder</code> from <code class="language-python">sklearn.preprocessing</code>;</li>
+<li>Create the encoder and specify the <code class="language-python">drop='first'</code> parameter to drop the first column, created by the encoder;</li>
+<li>Fit the encoder to the training data using three categorical columns: <code class="language-python">Zip_area</code>,  <code class="language-python">Zip_loc</code>, <code class="language-python">Room</code>;</li>
+<li>Transform the training and the test datasets with the fitted encoder. An example of how to do it:
+	<pre><code class="language-python">X_train_transformed = pd.DataFrame(enc.transform(X_train[['Zip_area', 'Zip_loc', 'Room']]).toarray(), index=X_train.index)</code></pre>
+</li>
+<li>Return the transformed data to the dataset using the code below. An example of how to do it:
+	<pre><code class="language-python">X_train_final = X_train[['Area', 'Lon', 'Lat']].join(X_train_transformed)</code></pre>
+<div class="alert alert-warning">Don't overwrite the original <code class="language-python">X_train</code> and <code class="language-python">X_test</code> datasets, we will use them in the next stages.</div></li>
+<li>Use <code class="language-python">DecisionTreeClassifier</code> from <code class="language-python">scikit-learn</code>. Initialize the model with the following parameters: <code class="language-python">criterion='entropy'</code>, <code class="language-python">max_features=3</code>, <code class="language-python">splitter='best'</code>, <code class="language-python">max_depth=6</code>, <code class="language-python">min_samples_split=4</code>, and <code class="language-python">random_state=3</code>. Fit the model to the training data and predict the house prices on the test data;</li>
+<li>Evaluate the model's accuracy using the <code class="language-python">accuracy_score</code> function from <code class="language-python">sklearn.metrics</code>;</li>
+<li>Print the accuracy value.</li>
+</ol>
+<p>You can practice and use <code class="language-python">ColumnTransformer</code> from <code class="language-python">scikit-learn</code> by passing three different <code class="language-python">OneHotEncoder</code>s to fit them simultaneously.</p>
+<h5 id="example">Example</h5>
+<p><em>Output:</em></p>
+<pre><code class="language-no-highlight">0.5786</code></pre>
+</div>

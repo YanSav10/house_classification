@@ -1,0 +1,28 @@
+<div class="step-text">
+<h5 id="description">Description</h5>
+<p>In the previous stage, you got to know the data. As there are no problems with it, we can move on. The next step is to create a training and test split to further proceed with the ML pipeline.</p>
+<p>Ensure that the categorical column with a lot of unique values (in this case, it is the <code class="java">Zip_loc</code> column) has all of those unique values in the training dataset. This issue may be addressed with the <code class="java">stratify</code> option in the <code class="java">train_test_split</code> function from <code class="java">scikit-learn</code> library. </p>
+<h5 id="objectives">Objectives</h5>
+<p>Continue to work with the data from the previous stage. To complete this stage:</p>
+<ol>
+<li>Import <code class="java">train_test_split</code> from <code class="java">scikit-learn</code>;</li>
+<li>Create two separate datasets:
+	<ul>
+<li>The <code class="java">X</code> dataset for the following columns <code class="java">Area</code>, <code class="java">Room</code>, <code class="java">Lon</code>, <code class="java">Lat</code>, <code class="java">Zip_area</code>, and <code class="java">Zip_loc</code>;</li>
+<li>The <code class="java">y</code> dataset for the <code class="java">Price</code> target column;</li>
+</ul>
+</li>
+<li>Split the two datasets using the <code class="java">train_test_split</code> function. The test data proportion is 30%. Set the <code class="java">stratify</code> parameter to <code class="java">X['Zip_loc'].values</code>, <code class="java">random_state</code> to <code class="java">1</code>. Note that this will create a total of four separate datasets;</li>
+<li>Print the value count dictionary of the <code class="java">Zip_loc</code> column in the final training dataset.</li>
+</ol>
+<h5 id="example">Example</h5>
+<p><em>Example of training dataset:</em></p>
+<pre><code class="language-no-highlight">     Area  Room       Lon        Lat  Zip_area Zip_loc
+499   102     5  4.983162  52.294189        11      LD
+535    79     3  5.009082  52.351935        10      LD
+88    220     5  4.920481  52.366984        10      AW
+388    93     3  4.875949  52.366908        10      HA
+689    81     3  4.810853  52.354008        10      ND</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-no-highlight">{"LD": 2, "AW": 1, "HA": 1, "ND": 1}</code></pre>
+</div>
